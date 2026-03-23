@@ -7,6 +7,8 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const placesRoutes = require('./routes/places');
 const uploadRoutes = require('./routes/upload');
+const customerAuthRoutes = require('./routes/customerAuth');
+const bookingsRoutes = require('./routes/bookings');
 const { seedAdmin } = require('./controllers/authController');
 
 const app = express();
@@ -18,6 +20,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/places', placesRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/customer/auth', customerAuthRoutes);
+app.use('/api/bookings', bookingsRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
